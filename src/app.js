@@ -2,13 +2,25 @@ import { extend } from 'underscore'
 import Backbone from 'backbone'
 import Two from 'two.js'
 
+import getSVG from './svg'
+
 const app = extend({}, Backbone.Events)
 
-app.init = function (rootEl) {
+app.init = function(rootEl) {
   // clean up
-  rootEl.innerHTML = '';
+  rootEl.innerHTML = ''
+
   // Make an instance of two and place it on the page.
-  var two = new Two({ width: 640, height: 360 }).appendTo(rootEl)
+  const two = new Two({ width: 640, height: 360 }).appendTo(rootEl)
+
+  const face = getSVG('happy1')
+  var shape = two.interpret(face).center()
+  shape.translation.x = 120
+  shape.translation.y = 100
+  shape.scale = 0.1
+  shape.fill = 'blue'
+
+
 
   var circle = two.makeCircle(-70, 0, 50)
   var rect = two.makeRectangle(70, 0, 100, 100)
@@ -22,7 +34,7 @@ app.init = function (rootEl) {
 
   // Bind a function to scale and rotate the group
   // to the animation loop.
-  two.bind('update', function(frameCount) {
+  two.on('update', function(frameCount) {
     // This code is called everytime two.update() is called.
     // Effectively 60 times per second.
     if (group.scale > 0.9999) {

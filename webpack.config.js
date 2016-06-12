@@ -35,6 +35,10 @@ module.exports = {
       test: /\.css?$/,
       loaders: ['style', 'raw'],
       include: __dirname
+    }, {
+      test: /\.svg$/,
+      loaders: ['raw'],
+      include: path.join(__dirname, 'src/svg')
     }]
   }
 };
