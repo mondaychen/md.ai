@@ -6,6 +6,6 @@ app.init(rootEl)
 
 if (module.hot) {
   module.hot.accept('./app', () => {
-    app.init(rootEl)
+    require('./app').default.init(rootEl)
   })
 }
