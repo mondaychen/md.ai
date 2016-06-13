@@ -4,8 +4,12 @@ const rootEl = document.getElementById('root')
 
 app.init(rootEl)
 
+let lastApp = app
+
 if (module.hot) {
   module.hot.accept('./app', () => {
-    require('./app').default.init(rootEl)
+    lastApp.clear()
+    lastApp = require('./app').default
+    lastApp.init(rootEl)
   })
 }

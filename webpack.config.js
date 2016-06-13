@@ -16,6 +16,7 @@ module.exports = {
   resolve: {
     root: [
       __dirname,
+      path.join(__dirname, 'src'),
       path.join(__dirname, 'lib')
     ]
   },
