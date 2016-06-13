@@ -20,6 +20,7 @@ app.init = function(rootEl) {
     // clean up
     two.pause()
     two.clear()
+    two.off()
     rootEl.innerHTML = ''
   })
 }
