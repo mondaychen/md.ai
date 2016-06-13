@@ -17,7 +17,7 @@ export default function createTimeline(two) {
     currentTime += two.timeDelta || 0
     let next
     while(next = heap.peek()) {
-      if (next.time < currentTime) {
+      if (next.timestamp < currentTime) {
         next.callback()
         heap.pop()
       } else {
