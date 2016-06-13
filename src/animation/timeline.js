@@ -4,11 +4,14 @@ import Heap from 'heap'
 export default function createTimeline(two) {
   const heap = new Heap((l, r) => l.timestamp - r.timestamp)
   const timeline = {
-    on(timestamp, callback) {
+    _lastTimestamp: 0,
+    next(timestamp = 0, callback) {
       heap.push({
-        timestamp: timestamp,
+        timestamp: timestamp + this._lastTimestamp,
         callback
       })
+      this._lastTimestamp += timestamp
+      return timeline
     }
   }
 
