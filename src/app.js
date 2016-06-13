@@ -1,5 +1,6 @@
 import { extend } from 'underscore'
 import Backbone from 'backbone'
+import TWEEN from 'tween.js'
 
 import playLogo from './animation/logo'
 import playStage from './animation/stage'
@@ -14,7 +15,10 @@ app.init = function(rootEl) {
   playLogo(two)
   playStage(two)
 
-  two.play()  // Finally, start the animation loop
+  //start the animation loop
+  two.on('update', function() {
+    TWEEN.update()
+  }).play()
 
   this.once('clear', () => {
     // clean up
