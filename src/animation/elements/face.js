@@ -5,7 +5,6 @@ export default class FaceElement {
     this.two = two
 
     this.el = new Two.Group()
-    two.add(this.el)
     this.loadFace(type)
   }
 
