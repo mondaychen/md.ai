@@ -18,7 +18,7 @@ export default function stage(two) {
     }, 750)
     .start()
 
-  timeline.on(5.5, function() {
+  timeline.on(3000, function() {
     face.loadFace('crying')
   })
 }

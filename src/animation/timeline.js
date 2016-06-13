@@ -6,7 +6,7 @@ export default function createTimeline(two) {
   const timeline = {
     on(timestamp, callback) {
       heap.push({
-        timestamp: timestamp * 1000,
+        timestamp: timestamp,
         callback
       })
     }
