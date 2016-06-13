@@ -21,7 +21,6 @@ export default function stage(two) {
   hero.el.fill = 'blue'
   two.add(hero.el)
 
-console.log(TWEEN.Easing)
   timeline.next(500, function() {
     new TWEEN.Tween(hero.el.translation)
       .easing(TWEEN.Easing.Cubic.Out)
@@ -46,7 +45,26 @@ console.log(TWEEN.Easing)
       .start()
   })
   .next(230, function() {
-    hero.loadFace('sad')
+    hero.loadFace('shocked1')
     hero.el.fill = 'blue'
+  })
+  .next(2500, function() {
+    hero.loadFace('crying')
+    hero.el.fill = 'blue'
+  })
+  .next(500, function() {
+    const shakeRight = new TWEEN.Tween(hero.el.translation)
+      .easing(TWEEN.Easing.Bounce.In)
+      .to({
+        x: hero.el.translation.x
+      }, 200)
+
+    new TWEEN.Tween(hero.el.translation)
+      .easing(TWEEN.Easing.Bounce.Out)
+      .to({
+        x: hero.el.translation.x - 20
+      }, 100)
+      .onComplete(() => shakeRight.start())
+      .start()
   })
 }
