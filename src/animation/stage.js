@@ -1,13 +1,14 @@
-import getSVG from '../svg'
+import FaceElement from './elements/face'
 import createTimeline from './timeline'
 
 export default function stage(two) {
   const timeline = createTimeline(two)
+
+  const face = new FaceElement(two, 'happy1')
+  face.el.translation.x = 120
+  face.el.translation.y = 100
+
   timeline.on(5.5, function() {
-    const face = getSVG('happy1')
-    var shape = two.interpret(face).center()
-    shape.translation.x = 120
-    shape.translation.y = 100
-    shape.scale = 0.1
+    face.loadFace('crying')
   })
 }

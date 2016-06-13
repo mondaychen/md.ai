@@ -1,7 +1,9 @@
 import happy1 from './faces/happy-1.svg'
+import crying from './faces/crying.svg'
 
 export const SVG_LIB = {
-  happy1
+  happy1,
+  crying
 }
 
 export default function getSVG(name) {
